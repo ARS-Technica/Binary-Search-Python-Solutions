@@ -1,0 +1,61 @@
+"""
+Inverse Factorial
+Easy
+https://binarysearch.com/problems/Inverse-Factorial
+
+The factorial of a number n is defined as n! = n * (n - 1) * (n - 2) * ... * 1.
+
+Given a positive integer a, return n such that n! = a. If there is no integer n 
+that is a factorial, then return -1.
+
+Constraints
+0 < a < 2 ** 31
+"""
+
+import math
+class Solution:
+    def solve(self, a):
+        factorials = [1]
+        fact = 0
+        num = 1        
+        
+        while fact < a:
+            fact = math.factorial(num)
+            factorials.append(fact)
+            num += 1
+            
+        if a in factorials:
+            return factorials.index(a)
+        else:
+            return -1
+
+
+if __name__ == '__main__':
+    print(Solution().solve(6))     #3
+    print(Solution().solve(10))    #-1
+    
+# 1:1, 2:2, 3:6, 4:24, 5:120, 6:720, 7:5040, 8:40320
+#Your code took 1 millisecond — faster than 99.92% in Python
+
+#%%
+
+# Better solution, not mine
+
+class Solution:
+    def solve(self, a):
+        count = 1
+        factor = 2
+        while a > 1:
+            a = a / factor
+            factor += 1
+            count += 1
+
+        if a == 1:
+            return count
+        else:
+            return -1
+
+if __name__ == '__main__':
+    print(Solution().solve(6))     #3
+    print(Solution().solve(10))    #-1
+    
