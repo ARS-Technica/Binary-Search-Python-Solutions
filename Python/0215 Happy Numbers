@@ -1,0 +1,71 @@
+ 
+"""
+Happy Numbers
+https://binarysearch.com/problems/Happy-Numbers
+
+Given an integer n, we apply this transformation until it becomes a 1: take 
+each of the digits in n, square it, and then take their sum.
+
+Return whether n will end up in 1 after the transformations.
+
+7 is a happy number since we get this sequence [49, 97, 130, 10, 1]
+
+7 ** 2 = 49
+4 ** 2 + 9 ** 2 = 97
+9 ** 2 + 7 ** 2 = 130
+1 ** 2 + 3 ** 2 + 0 ** 2 = 10
+1 ** 2 + 0 ** 2 = 1
+"""
+
+class Solution:
+    def solve(self, n):
+        n = n**2
+        sequence = []
+        #print(list(str(n)))
+        while n != 1:
+            if len(list(str(n))) > 1:
+                sequence.append(n)
+                print(sequence)
+                n = sum(int(i)**2 for i in list(str(n)))
+                
+                if n == 1:
+                    return True
+                
+            else:
+                return False
+
+        
+if __name__ == '__main__':
+    print(Solution().solve(7))
+    print(Solution().solve(11))
+    print(Solution().solve(32333705))
+
+
+#%%
+
+
+class Solution:
+    def solve(self, n):
+        sequence = []
+
+        n = sum(int(i)**2 for i in list(str(n)))
+        sequence.append(n)
+        print(sequence)
+                
+        while len(str(sequence[-1])) > 1:
+           
+                n = sum(int(i)**2 for i in list(str(n)))
+                sequence.append(n)
+                print(sequence)
+                
+        if n == 1:
+            return True                
+        else:
+            return False
+
+        
+if __name__ == '__main__':
+    print(Solution().solve(7))
+    print(Solution().solve(11))
+    print(Solution().solve(32333705))
+
