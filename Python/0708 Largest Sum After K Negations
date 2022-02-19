@@ -1,0 +1,119 @@
+"""
+708. Largest Sum After K Negations
+Easy
+https://binarysearch.com/problems/Largest-Sum-After-K-Negations
+
+You are given a list of integers nums and an integer k. Consider an operation 
+where you pick an element in nums and negate it. Given that you must make 
+exactly k operations, return the maximum resulting sum that can be obtained.
+
+Constraints
+n ≤ 100,000 where n is the length of nums
+k < 2 ** 31
+"""
+
+class Solution:
+    def solve(self, nums, k):
+        max = sum(abs(i) for i in nums)
+        
+        pos = []
+        neg = []
+        con = []
+        zer = 0
+        
+        for num in nums:
+            if num > 0:
+                pos.append(num)
+            elif num == 0:
+                zer += 1
+            else:
+                neg.append(num)
+        
+        if zer > 0: 
+            if len(neg) <= k:
+                return max
+
+            elif len(neg) > k:
+                res = (sum(abs(j) for j in sorted(neg)[0 : k]) * 2) + sum(neg) + sum(pos)
+                return res
+
+        else:
+            if len(neg) == k:
+                return max
+
+            elif len(neg) > k:
+                while k > 0:
+                    next = abs(min(neg))
+                    pos.append(next)
+                    neg.remove(min(neg))
+                    k -= 1
+                    
+                return sum(pos) + sum(neg)  
+            
+            else:
+                for i in neg:
+                    pos.append(abs(i))
+                    k -= 1
+                    
+                if k % 2 == 0:
+                    return max
+                else:
+                    return max - (sorted(pos)[0] * 2)
+
+
+if __name__ == '__main__':
+    print(Solution().solve([1, 0, -5, -3], 4)) #9
+    print(Solution().solve([1, 1, 1], 7))   #1
+    print(Solution().solve([1, 1, 2], 1))   #2  
+    print(Solution().solve([-1, -2, -3, -4], 1))   #-2 
+
+    print(Solution().solve([4,2,3], 1)) #5
+    print(Solution().solve([3,-1,0,2], 3))   #6
+    print(Solution().solve([2,-3,-1,5,-4], 2))   #13  
+    print(Solution().solve([-28, -19, -13, 5, -12, -27, 0, 29, -2, -6], 2)) #37
+    
+    print(Solution().solve([0, -5, -4, -3, -2, -1], 4)) #13
+    print(Solution().solve([0], 1)) #0
+    print(Solution().solve([-2, -1], 2)) #3
+    print(Solution().solve([2, 1], 2)) #3
+
+# Your code took 90 milliseconds — faster than 94.34% in Python                
+
+#%%
+
+#Better solution, not mine
+ 
+class Solution:
+    def solve(self, nums, k):
+        n = len(nums)
+        if n == 0:
+            return 0
+
+        nums.sort()
+        for idx in range(n):
+            if nums[idx] < 0 and k > 0:
+                k -= 1
+                nums[idx] *= -1
+
+        if k & 1 == 1:
+            return sum(nums) - 2 * min(nums)
+
+        return sum(nums)
+
+
+if __name__ == '__main__':
+    print(Solution().solve([1, 0, -5, -3], 4)) #9
+    print(Solution().solve([1, 1, 1], 7))   #1
+    print(Solution().solve([1, 1, 2], 1))   #2  
+    print(Solution().solve([-1, -2, -3, -4], 1))   #-2 
+
+    print(Solution().solve([4,2,3], 1)) #5
+    print(Solution().solve([3,-1,0,2], 3))   #6
+    print(Solution().solve([2,-3,-1,5,-4], 2))   #13  
+    print(Solution().solve([-28, -19, -13, 5, -12, -27, 0, 29, -2, -6], 2)) #37
+    
+    print(Solution().solve([0, -5, -4, -3, -2, -1], 4)) #13
+    print(Solution().solve([0], 1)) #0
+    print(Solution().solve([-2, -1], 2)) #3
+    print(Solution().solve([2, 1], 2)) #3
+    
