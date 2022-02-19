@@ -1,0 +1,60 @@
+
+"""
+Recurring Character
+Easy
+https://binarysearch.com/problems/Recurring-Character
+
+Given a lowercase alphabet string s, return the index of the first recurring character in it.
+If there are no recurring characters, return -1.
+"""
+
+'''
+#https://stackoverflow.com/questions/21199943/index-of-second-repeated-character-in-a-string
+
+i = 'CARTOON'.index('O')
+print 'CARTOON'.index('O', i + 1)
+Output: 5
+'''
+
+s1 = "abcda"
+s2 = "abcde"
+
+class Solution:
+    def solve(self, s):
+
+        characters = []
+        duplicates = False
+        
+        for char in list(s):
+            if char in characters:
+                duplicates = True
+                first = s.index(char)
+                #print(s.index(char, first + 1))
+                return s.index(char, first + 1)
+            else:
+                characters.append(char)
+                
+        if duplicates == False:
+            print(-1)
+            return -1   
+        
+if __name__ == '__main__':
+    solve(s1)    #4
+    solve(s2)   #-1
+
+# Your code took 13 milliseconds — faster than 15.48% in Python
+
+#%%
+ 
+#Better solution, not mine
+
+class Solution:
+    def solve(self, s):
+        hashTable = {}
+        for i, char in enumerate(s):
+            if char in hashTable:
+                return i
+            hashTable[char] = True
+        return -1
+
+# Your code took 8 milliseconds — faster than 99.09% in Python   
