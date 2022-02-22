@@ -1,0 +1,33 @@
+
+"""
+226. Buying Cars
+Easy
+https://binarysearch.com/problems/Buying-Cars
+
+Given a list of integers prices representing prices of cars for sale, and a 
+budget k, return the maximum number of cars you can buy.
+
+Constraints
+
+n ≤ 200,000 where n is the length of prices
+"""
+
+class Solution:
+    def solve(self, prices, k):
+        count, total = 0, k
+        prices.sort(reverse=True)
+        if min(prices) > k: return 0
+        if sum(prices) <= k: return len(prices)
+        while prices and total >= 0:
+            total -= prices.pop()
+            count += 1
+        return count - 1
+
+
+if __name__ == '__main__':
+    print(Solution().solve([90, 30, 20, 40, 90], 95))       #3
+    print(Solution().solve([60, 90, 55, 75], 50))           #0
+    print(Solution().solve([158], 0))                       #0
+    print(Solution().solve([42, 64, 155], 261))             #3
+
+# Your code took 24 milliseconds — faster than 72.88% in Python    
