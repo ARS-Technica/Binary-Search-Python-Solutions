@@ -109,3 +109,32 @@ if __name__ == '__main__':
     print(Solution().solve([-1, 1]))                    #-1
 
 # Time Limit Exceeded
+ 
+#%% 
+ 
+class Solution:
+    def solve(self, nums):
+        total = sum(nums)
+        left_sum = 0
+        for idx, n in enumerate(nums):
+            if (left_sum * 2) + n == total:
+                return idx
+            left_sum += n
+        return -1
+
+
+if __name__ == '__main__':
+    print(Solution().solve([2, -1, -1, 0]))             #3
+    print(Solution().solve([2, 3, 4, 0, 5, 2, 2]))      #3
+    print(Solution().solve([1, -2, 2]))                 #0
+    print(Solution().solve([0, 2]))                     #1
+    print(Solution().solve([0, 0]))                     #0
+    print(Solution().solve([-1, 1, 0]))                 #2    
+    print(Solution().solve([-1, 1]))                    #-1
+
+# Your code took 21 milliseconds — faster than 82.50% in Python
+
+
+
+
+
