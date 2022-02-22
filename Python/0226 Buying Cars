@@ -31,3 +31,25 @@ if __name__ == '__main__':
     print(Solution().solve([42, 64, 155], 261))             #3
 
 # Your code took 24 milliseconds — faster than 72.88% in Python    
+
+#%%
+ 
+class Solution:
+    def solve(self, prices, k): 
+        prices.sort()
+        res = 0
+        for i in prices:
+            if k >= i:
+                k -= i
+                res += 1
+        return res
+ 
+
+if __name__ == '__main__':
+    print(Solution().solve([90, 30, 20, 40, 90], 95))       #3
+    print(Solution().solve([60, 90, 55, 75], 50))           #0
+    print(Solution().solve([158], 0))                       #0
+    print(Solution().solve([42, 64, 155], 261))             #3
+
+# Your code took 30 milliseconds — faster than 60.83% in Python
+# Better written, but slower
