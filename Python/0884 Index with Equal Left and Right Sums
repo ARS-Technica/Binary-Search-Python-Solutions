@@ -86,4 +86,26 @@ if __name__ == '__main__':
 # Time Limit Exceeded
 
 #%%
+ 
+# Time Limit Exceeded
 
+class Solution:
+    def solve(self, nums):
+        for idx, num in enumerate(nums):
+            if sum(nums[0:idx]) == sum(nums[idx+1::]):
+                return idx
+                
+        return -1
+                 
+        
+if __name__ == '__main__':
+    print(Solution().solve([2, -1, -1, 0]))             #3
+    print(Solution().solve([2, 3, 4, 0, 5, 2, 2]))      #3
+    print(Solution().solve([1, -2, 2]))                 #0
+    print(Solution().solve([0, 2]))                     #1
+    print(Solution().solve([0, 0]))                     #0
+    print(Solution().solve([-1, 1, 0]))                 #2
+    
+    print(Solution().solve([-1, 1]))                    #-1
+
+# Time Limit Exceeded
