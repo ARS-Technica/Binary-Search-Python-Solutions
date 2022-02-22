@@ -55,4 +55,35 @@ if __name__ == '__main__':
 
 #%%
 
+# Time Limit Exceeded
+ 
+class Solution:
+    def solve(self, nums):
+        sol = -1
+        tally_left = 0
+        tally_right = 0
+                
+        for idx, num in enumerate(nums):
+            #print('idx', idx, 'left', sum(nums[0:idx]), 'right', sum(nums[idx:]))
+            
+            tally_left = sum(nums[0:idx])
+            tally_right = sum(nums[idx+1::])   
+            
+            if tally_left == tally_right:  
+                sol = idx
+                break
+            
+        return sol
+        
+
+if __name__ == '__main__':
+    print(Solution().solve([2, 3, 4, 0, 5, 2, 2]))      #3
+    print(Solution().solve([1, -2, 2]))                 #0
+    print(Solution().solve([0, 2]))                     #1
+    print(Solution().solve([0, 0]))                     #0
+    print(Solution().solve([-1, 1, 0]))                 #2
     
+# Time Limit Exceeded
+
+#%%
+
