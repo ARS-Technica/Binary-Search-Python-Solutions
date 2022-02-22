@@ -24,3 +24,35 @@ Output 0
 Explanation
 Sum of the numbers left of index 0 is 0 and sum of the numbers right of index 0 also 0.
 """
+
+class Solution:
+    def solve(self, nums):
+        pointer_value = 0
+        sol = -1
+        tally_left = [0,]
+        #print('tally_left', tally_left, 'pointer_value', pointer_value, 'nums', nums)
+        nums.append(0)
+        for idx, num in enumerate(nums):
+            #print('idx', idx, 'num', num)
+            tally_left.append(pointer_value)
+            pointer_value = nums.pop(0)
+            #print('tally_left', tally_left, 'pointer_value', pointer_value, 'nums', nums)
+            if sum(tally_left) == sum(nums):
+                sol = idx
+                break
+        #print('tally_left', tally_left, 'pointer_value', pointer_value, 'nums', nums)                    
+        return sol
+
+
+if __name__ == '__main__':
+    print(Solution().solve([2, 3, 4, 0, 5, 2, 2]))      #3    
+    print(Solution().solve([1, -2, 2]))                 #0
+    print(Solution().solve([0, 2]))                     #1
+    print(Solution().solve([0, 0]))                     #0
+    print(Solution().solve([-1, 1, 0]))                 #2
+
+# Failed
+
+#%%
+
+    
