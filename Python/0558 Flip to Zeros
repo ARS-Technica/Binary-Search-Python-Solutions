@@ -90,3 +90,31 @@ if __name__ == '__main__':
  
 # Time Limit Exceeded
 
+
+#%%
+
+# Submitted
+
+class Solution:
+    def solve(self, nums):
+        count = 0 
+        it, not_it = 1, 0
+    
+        for n in nums:          
+            if n == it: 
+                count += 1
+                not_it, it = it, not_it
+
+        return count                    
+        
+        
+if __name__ == '__main__':
+    print(Solution().solve([0, 1, 0, 0]))       #2
+    print(Solution().solve([1, 0, 0, 0]))       #2
+    print(Solution().solve([0, 1, 0]))          #2  
+    print(Solution().solve([1, 1, 0]))          #2
+    print(Solution().solve([1]))                #1
+    print(Solution().solve([0, 0, 0]))          #0
+    print(Solution().solve([0]))                #0    
+
+# Your code took 23 milliseconds — faster than 94.83% in Python
