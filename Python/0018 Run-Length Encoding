@@ -36,6 +36,7 @@ if __name__ == '__main__':
 
 #%%
 
+# Tryied to take up less space, ended up running slower.
 
 class Solution:
     def solve(self, s):
@@ -60,6 +61,31 @@ if __name__ == '__main__':
     print(Solution().solve("aaaaaaaaaa"))           # "10a"
 
 # Your code took 5 milliseconds — faster than 16.38% in Python
+
+
+#%%
+
+# Not mine.
+# https://binarysearch.com/problems/Run-Length-Encoding/solutions/3387211
+
+# Ironically, the most professional-looking solution ran the slowest.
+
+
+from itertools import groupby
+
+
+class Solution:
+    def solve(self, s):
+        return ''.join(str(len(list(n))) + i for i, n in groupby(s))
+
+
+if __name__ == '__main__':
+    print(Solution().solve("aaaabbbccdaa"))         # "4a3b2c1d2a"
+    print(Solution().solve("abcde"))                # "1a1b1c1d1e"
+    print(Solution().solve("aabba"))                # "2a2b1a"
+    print(Solution().solve("aaaaaaaaaa"))           # "10a"
+
+# Success! Your code took 4 milliseconds — faster than 42.76% in Python
 
 
 #%%
