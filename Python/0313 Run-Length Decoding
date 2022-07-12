@@ -34,3 +34,30 @@ if __name__ == "__main__":
 
 # Success! Your code took 2 milliseconds — faster than 100.00% in Python
 
+
+#%%
+
+
+class Solution:
+    def solve(self, s):
+        multiplier = ""
+        result = []
+
+        for idx in s:
+            if idx.isalpha():
+                result.append(idx * int(multiplier))
+                multiplier = ""
+            else:
+                multiplier += idx
+
+        return "".join(result)
+
+
+if __name__ == "__main__":
+    print(Solution().solve("4a3b2c1d2a"))       # "aaaabbbccdaa"
+    print(Solution().solve("10a"))              # "aaaaaaaaaa"  
+
+# Success! Your code took 3 milliseconds — faster than 61.07% in Python
+
+
+#%%
