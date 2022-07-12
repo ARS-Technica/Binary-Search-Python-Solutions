@@ -12,6 +12,8 @@ Constraints
 0 ≤ n ≤ 100,000 where n is the length of s
 """
 
+# Time Complexity: O(n) | Space Complexity O(1)
+
 
 class Solution:
     def solve(self, s):
