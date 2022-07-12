@@ -1,0 +1,36 @@
+"""
+0313. Run-Length Decoding
+https://binarysearch.com/problems/Run-Length-Decoding 
+
+Given a string s, consisting of digits and lowercase alphabet characters, 
+that's a run-length encoded string, return its decoded version.
+
+Note: The original string is guaranteed not to have numbers in it.
+
+Constraints
+
+0 ≤ n ≤ 100,000 where n is the length of s
+"""
+
+
+class Solution:
+    def solve(self, s):
+        multiplier = ""
+        result = ""
+
+        for idx in s:
+            if idx.isalpha():
+                result += idx * int(multiplier)
+                multiplier = ""
+            else:
+                multiplier += idx
+
+        return result
+
+
+if __name__ == "__main__":
+    print(Solution().solve("4a3b2c1d2a"))       # "aaaabbbccdaa"
+    print(Solution().solve("10a"))              # "aaaaaaaaaa"  
+
+# Success! Your code took 2 milliseconds — faster than 100.00% in Python
+
