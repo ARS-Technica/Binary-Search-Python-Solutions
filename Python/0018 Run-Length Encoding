@@ -1,0 +1,37 @@
+"""
+0018. Run-Length Encoding
+Easy
+https://binarysearch.com/problems/Run-Length-Encoding 
+
+Given a string s, return its run-length encoding. You can assume the string to
+be encoded have no digits and consists solely of alphabetic characters.
+"""
+
+
+class Solution:
+    def solve(self, s):
+        count = 0
+        result = ""
+        temp = s[0]
+        
+        for char in s:
+            if char == temp[-1]:
+                count += 1
+            else:
+                result += str(count) + temp[-1]
+                count = 1
+                temp += char
+        
+        return result + str(count) + temp[-1]
+
+        
+if __name__ == '__main__':
+    print(Solution().solve("aaaabbbccdaa"))         # "4a3b2c1d2a"
+    print(Solution().solve("abcde"))                # "1a1b1c1d1e"
+    print(Solution().solve("aabba"))                # "2a2b1a"
+    print(Solution().solve("aaaaaaaaaa"))           # "10a"
+
+# Success! Your code took 3 milliseconds — faster than 90.75% in Python
+
+
+#%%
