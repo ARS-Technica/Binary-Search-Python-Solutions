@@ -1,0 +1,38 @@
+"""
+0417. Longest Common Prefix
+Easy
+https://binarysearch.com/problems/Longest-Common-Prefix
+
+Given a list of lowercase alphabet strings words, return the longest common prefix.
+
+Example 1
+Input: words = ["anthony", "ant", "antigravity"]
+Output: "ant"
+Explanation
+"ant" is the longest common prefix between the three strings.
+"""
+
+
+class Solution:
+    def solve(self, words):
+        if not words: return -1
+
+        shortest = min(words, key=len)
+
+        for i, char in enumerate(shortest):
+            for word in words:
+                if word[i] != char:
+                    return shortest[:i] if len(shortest[:i]) > 0 else ""
+
+        return shortest
+
+
+if __name__ == '__main__':
+    print(Solution().solve(["anthony", "ant", "antigravity"]))                  # "ant"
+    print(Solution().solve(["cant", "ant"]))                                    # ""
+
+# Success! Your code took 61 milliseconds — faster than 68.46% in Python
+
+
+#%%
+
