@@ -12,6 +12,7 @@ Explanation
 "ant" is the longest common prefix between the three strings.
 """
 
+# Time Complexity: O(m*n) | Space Complexity: 0(1)
 
 class Solution:
     def solve(self, words):
@@ -36,3 +37,27 @@ if __name__ == '__main__':
 
 #%%
 
+# Not mine.
+# https://binarysearch.com/problems/Longest-Common-Prefix/solutions/5295472
+
+
+class Solution:
+    def solve(self, words):
+        temp = []
+        for i in zip(*words):
+            if len(set(i)) == 1:
+                temp.append(i[0])
+            else:
+                break
+
+        return "".join(temp)
+
+
+if __name__ == '__main__':
+    print(Solution().solve(["anthony", "ant", "antigravity"]))                  # "ant"
+    print(Solution().solve(["cant", "ant"]))                                    # ""
+
+# Your code took 31 milliseconds — faster than 77.87% in Python
+   
+
+#%%
