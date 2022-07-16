@@ -1,0 +1,19 @@
+"""
+750. Check if Number Is Perfect Square
+Easy
+https://binarysearch.com/problems/Check-if-Number-Is-Perfect-Square
+
+Given an integer n, return whether n = k * k for some integer k.
+
+This should be done without using built-in square root function.
+"""
+
+class Solution:
+    def solve(self, n):
+        square = n**.5
+        return square - int(square) == 0
+
+if __name__ == "__main__":
+    print(Solution().solve(25))
+
+# Success! Your code took 21 milliseconds — faster than 90.86% in Python
