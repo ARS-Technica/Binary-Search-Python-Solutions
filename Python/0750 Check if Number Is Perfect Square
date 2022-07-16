@@ -17,3 +17,34 @@ if __name__ == "__main__":
     print(Solution().solve(25))
 
 # Success! Your code took 21 milliseconds — faster than 90.86% in Python
+
+
+#%%
+
+# Evidently, the site did not want a mathematical answer.
+# Instead, let's go searching through numbers ranging up to n.
+
+class Solution:
+    def solve(self, n):
+        left = 0
+        right = n
+
+        while left <= right:
+            middle = (left + right) // 2
+            squared = middle ** 2
+
+            if squared < n:
+                left = middle + 1
+            elif squared > n:
+                right = middle - 1
+            else:   #squared == n:
+                return True
+
+        return False
+
+
+if __name__ == "__main__":
+    print(Solution().solve(25))
+
+# Success! Your code took 97 milliseconds — faster than 40.76% in Python
+
