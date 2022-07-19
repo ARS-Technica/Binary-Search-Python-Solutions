@@ -27,3 +27,19 @@ if __name__ == "__main__":
 
 
 #%%
+
+# Not mine
+# https://binarysearch.com/problems/Hamming-Distance/solutions/3623565
+
+# Time Complexity: O(log n)  |  Space Complexity: O(log n)
+
+
+class Solution:
+    def solve(self, x, y):
+        return bin(x ^ y).count("1")
+
+if __name__ == "__main__":
+    print(Solution().solve(9, 5))                                               # 2
+
+
+#%%
