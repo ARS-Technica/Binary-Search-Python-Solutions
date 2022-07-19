@@ -1,0 +1,29 @@
+"""
+0151 Hamming Distance
+Easy
+https://binarysearch.com/problems/Hamming-Distance 
+
+Given two integers x, and y return the number of positions where their values
+differ in their binary representations as a 32-bit integer.
+"""
+
+# Time ComplexityL O(n) | Space Complexity: O(n) 
+
+
+import itertools
+
+class Solution:
+    def solve(self, x, y):
+        x = list(reversed(bin(x)[2::]))
+        y = list(reversed(bin(y)[2::]))
+
+        return sum([1 for tup in list(itertools.zip_longest(x, y, fillvalue='0')) if tup[0] != tup[1]])
+
+
+if __name__ == "__main__":
+    print(Solution().solve(9, 5))                                               # 2
+
+# Success! Your code took 1 millisecond — faster than 100.00% in Python
+
+
+#%%
