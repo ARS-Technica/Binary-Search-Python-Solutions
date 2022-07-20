@@ -15,3 +15,31 @@ Constraints
 0 ≤ n ≤ 100,000 where n is the length of nums
 0 ≤ m ≤ 100,000 where m is the length of multipliers
 """
+
+
+class Solution:
+    def solve(self, nums, multipliers):
+        nums.sort()
+        multipliers.sort()
+        res = 0
+
+        if len(nums) < len(multipliers):
+            nums, multipliers = multipliers, nums
+
+        n, m = len(nums), len(multipliers)
+
+        for i in range(m):
+            if multipliers[i] <= 0:
+                print(nums[i], multipliers[i])
+                res += nums[i] * multipliers[i]
+            else:
+                print(multipliers[i], nums[n - (m - i)])
+                res += multipliers[i] * nums[n - (m - i)]
+        return res
+
+
+if __name__ == '__main__':
+    print(Solution().solve([-5, 3, 2], [-3, 1]))    #18
+    print(Solution().solve([0, -1], [0, 1])) #0
+    print(Solution().solve([-2, 1, 2,], [-1, -1, 0])) #1
+
