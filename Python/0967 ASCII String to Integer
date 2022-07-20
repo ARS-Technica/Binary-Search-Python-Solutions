@@ -1,0 +1,26 @@
+"""
+0967. ASCII String to Integer
+Easy
+https://binarysearch.com/problems/ASCII-String-to-Integer 
+
+You are given a string s containing digits from "0" to "9" and lowercase alphabet
+characters. Return the sum of the numbers found in s.
+"""
+
+
+class Solution:
+    def solve(self, s):
+        return sum([int(n) for n in s if n in '0123456789'])
+
+
+if __name__ == "__main__":
+    print(Solution().solve(s = "11aa32bbb5"))           # 48
+    print(Solution().solve(s = "abc"))                  # 0
+    print(Solution().solve(s = "1a2b30"))               # 33
+
+# ['1', '1', '3', '2', '5']     12
+# 0
+# ['1', '2', '3', '0']          6
+
+
+#%%
