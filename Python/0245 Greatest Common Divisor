@@ -29,3 +29,27 @@ if __name__ == "__main__":
 
 
 #%%
+
+# Better solution. Not mine.
+# https://binarysearch.com/problems/Greatest-Common-Divisor/solutions/239472
+
+# O(n) time | O(1) space
+
+import math
+
+
+class Solution:
+    def solve(self, nums):
+        return reduce(gcd, nums)
+
+
+if __name__ == "__main__":
+    print( Solution().solve( nums = [6, 12, 9]) )                   # 3
+    print( Solution().solve( nums = [6, 7, 9]) )                    # 1
+    print( Solution().solve( nums = [747]) )                        # 747
+    print( Solution().solve( nums = [700, 700, 700, 700]) )         # 700
+
+# 
+
+
+#%%
