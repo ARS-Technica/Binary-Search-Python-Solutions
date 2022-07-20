@@ -49,7 +49,41 @@ if __name__ == "__main__":
     print( Solution().solve( nums = [747]) )                        # 747
     print( Solution().solve( nums = [700, 700, 700, 700]) )         # 700
 
-# 
+# Success!
+# Your code took 14 milliseconds — faster than 67.43% in Python
+
+
+#%%
+
+# Euclid's algorithm
+
+
+class Solution:
+    def solve(self, nums):
+        def gcd(x, y):
+            if x > y:
+                return gcd(y, x)
+            if x == 0:
+                return y
+
+            return gcd(y % x, x)
+
+        result = nums[0]
+
+        for x in nums[1:]:
+            result = gcd(result, x)
+
+        return result
+
+
+if __name__ == "__main__":
+    print( Solution().solve( nums = [6, 12, 9]) )                   # 3
+    print( Solution().solve( nums = [6, 7, 9]) )                    # 1
+    print( Solution().solve( nums = [747]) )                        # 747
+    print( Solution().solve( nums = [700, 700, 700, 700]) )         # 700
+
+# Success!
+# Your code took 45 milliseconds — faster than 20.45% in Python
 
 
 #%%
