@@ -45,3 +45,31 @@ if __name__ == "__main__":
 
 #%%
 
+# Time Complexity O(N) | Space Complexity O(1)
+
+
+class Solution:
+    def solve(self, s):
+        result = 0
+        n = 0
+
+        for char in s:
+            if char.isdigit():
+                n = n * 10 + int(char)
+            else:
+                result += n
+                n = 0
+
+        return result + n
+
+
+if __name__ == "__main__":
+    print(Solution().solve(s = "11aa32bbb5"))           # 48
+    print(Solution().solve(s = "abc"))                  # 0
+    print(Solution().solve(s = "1a2b30"))               # 33
+
+# Success!
+# Your code took 41 milliseconds — faster than 69.13% in Python
+
+
+#%%
