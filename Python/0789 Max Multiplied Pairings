@@ -1,0 +1,17 @@
+"""
+0789. Max Multiplied Pairings
+Easy
+https://binarysearch.com/problems/Max-Multiplied-Pairings
+
+You are given two lists of integers nums and multipliers. Consider an operation 
+where we remove any number in nums and remove any number in multipliers then 
+multiply them together. Given that you must repeat this operation until one of 
+the lists is empty, return the maximum sum of the multiplied numbers.
+
+Note that the integers may be negative, zero, and/or positive.
+
+Constraints
+
+0 ≤ n ≤ 100,000 where n is the length of nums
+0 ≤ m ≤ 100,000 where m is the length of multipliers
+"""
