@@ -1,0 +1,31 @@
+"""
+0245. Greatest Common Divisor
+Easy
+https://binarysearch.com/problems/Greatest-Common-Divisor
+
+Given a list of positive integers nums, return the largest positive integer
+that divides each of the integers.
+"""
+
+
+class Solution:
+    def solve(self, nums):
+        smallest = min(nums)
+
+        if len(nums) == 1: return nums[0]
+
+        for i in range(smallest + 1, 1, -1):
+            if all(n % i == 0 for n in nums):
+                return i
+
+        return 1
+
+
+if __name__ == "__main__":
+    print( Solution().solve( nums = [6, 12, 9]) )                   # 3
+    print( Solution().solve( nums = [6, 7, 9]) )                    # 1
+    print( Solution().solve( nums = [747]) )                        # 747
+    print( Solution().solve( nums = [700, 700, 700, 700]) )         # 700
+
+
+#%%
