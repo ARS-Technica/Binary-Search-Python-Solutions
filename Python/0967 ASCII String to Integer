@@ -24,3 +24,24 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+import re
+
+class Solution:
+    def solve(self, s):
+        nums = re.split('[a-zA-Z]', s) 
+        return sum([int(n) for n in nums if n])
+
+
+if __name__ == "__main__":
+    print(Solution().solve(s = "11aa32bbb5"))           # 48
+    print(Solution().solve(s = "abc"))                  # 0
+    print(Solution().solve(s = "1a2b30"))               # 33
+
+# Success!
+# Your code took 57 milliseconds — faster than 44.79% in Python
+
+
+#%%
+
