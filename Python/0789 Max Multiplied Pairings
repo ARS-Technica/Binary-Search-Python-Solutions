@@ -30,11 +30,12 @@ class Solution:
 
         for i in range(m):
             if multipliers[i] <= 0:
-                print(nums[i], multipliers[i])
+                #print(nums[i], multipliers[i])
                 res += nums[i] * multipliers[i]
             else:
-                print(multipliers[i], nums[n - (m - i)])
+                #print(multipliers[i], nums[n - (m - i)])
                 res += multipliers[i] * nums[n - (m - i)]
+
         return res
 
 
