@@ -1,0 +1,40 @@
+"""
+0975. 5-Star Review Percentage
+Easy
+https://binarysearch.com/problems/5-Star-Review-Percentage 
+
+You are given a two-dimensional list of integers reviews and a positive integer
+threshold. Each element reviews[i] contains [x, y] meaning product i had x
+number of 5-star reviews and a total of y reviews. All reviews are for one store.
+
+Return the minimum number of additional 5-star reviews we need such that the
+percentage of 5-star reviews in the store is at least threshold. You can assume
+that it's possible to reach threshold% of 5-star reviews.
+"""
+
+
+class Solution:
+    def solve(self, reviews, threshold):
+        fives = sum([i[0] for i in reviews])
+        reviews = sum([i[1] for i in reviews])
+        percentage = (fives / reviews) * 100
+        increment = (1 / reviews) * 100
+        result = 0
+
+        if percentage >= threshold: return 0
+
+        while percentage < threshold:
+            percentage += increment
+            result += 1
+            
+        return result
+
+
+if __name__ == "__main__":
+    print(Solution().solve(reviews = [[4, 4], [1, 2], [3, 6]], threshold = 77))             # 6
+    print(Solution().solve(reviews = [[10, 20]], threshold = 50))                           # 0 
+
+# WRONG.  This returns how many of the EXISTING reviews would need to be changed
+
+
+#%%
