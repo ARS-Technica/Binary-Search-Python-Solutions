@@ -67,3 +67,34 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def solve(self, reviews, threshold):
+        fives = sum([i[0] for i in reviews])
+        reviews = sum([i[1] for i in reviews])
+        percentage = (fives / reviews) 
+
+        threshold /= 100
+        result = 0
+
+        if percentage >= threshold: return 0
+
+        while percentage < threshold:
+            fives += 1
+            reviews += 1
+            result += 1
+            percentage = (fives / reviews)
+
+        return result
+
+
+if __name__ == "__main__":
+    print(Solution().solve(reviews = [[4, 4], [1, 2], [3, 6]], threshold = 77))             # 6
+    print(Solution().solve(reviews = [[10, 20]], threshold = 50))                           # 0 
+
+# Success!
+# Your code took 197 milliseconds — faster than 36.14% in Python
+
+
+#%%
