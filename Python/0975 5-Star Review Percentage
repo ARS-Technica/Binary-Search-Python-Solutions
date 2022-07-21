@@ -1,7 +1,7 @@
 """
 0975. 5-Star Review Percentage
 Easy
-https://binarysearch.com/problems/5-Star-Review-Percentage 
+https://binarysearch.com/problems/5-Star-Review-Percentage
 
 You are given a two-dimensional list of integers reviews and a positive integer
 threshold. Each element reviews[i] contains [x, y] meaning product i had x
@@ -16,9 +16,9 @@ that it's possible to reach threshold% of 5-star reviews.
 class Solution:
     def solve(self, reviews, threshold):
         fives = sum([i[0] for i in reviews])
-        reviews = sum([i[1] for i in reviews])
-        percentage = (fives / reviews) * 100
-        increment = (1 / reviews) * 100
+        totals = sum([i[1] for i in reviews])
+        percentage = (fives / totals) * 100
+        increment = (1 / totals) * 100
         result = 0
 
         if percentage >= threshold: return 0
@@ -43,17 +43,17 @@ if __name__ == "__main__":
 class Solution:
     def solve(self, reviews, threshold):
         fives = sum([i[0] for i in reviews])
-        reviews = sum([i[1] for i in reviews])
-        percentage = (fives / reviews) * 100
+        totals = sum([i[1] for i in reviews])
+        percentage = (fives / totals) * 100
         result = 0
 
         if percentage >= threshold: return 0
 
         while percentage < threshold:
             fives += 1
-            reviews += 1
+            totals += 1
             result += 1
-            percentage = (fives / reviews) * 100
+            percentage = (fives / totals) * 100
 
         return result
 
@@ -68,12 +68,14 @@ if __name__ == "__main__":
 
 #%%
 
+# Time Complexity: O(n) 
+
 
 class Solution:
     def solve(self, reviews, threshold):
         fives = sum([i[0] for i in reviews])
-        reviews = sum([i[1] for i in reviews])
-        percentage = (fives / reviews) 
+        totals = sum([i[1] for i in reviews])
+        percentage = (fives / totals) 
 
         threshold /= 100
         result = 0
@@ -82,9 +84,9 @@ class Solution:
 
         while percentage < threshold:
             fives += 1
-            reviews += 1
+            totals += 1
             result += 1
-            percentage = (fives / reviews)
+            percentage = (fives / totals)
 
         return result
 
@@ -98,3 +100,73 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def solve(self, reviews, threshold):
+        fives, totals = map(sum, list(zip(*reviews))) 
+        percentage = (fives / totals) 
+
+        threshold /= 100
+        result = 0
+
+        if percentage >= threshold: return 0
+
+        while percentage < threshold:
+            fives += 1
+            totals += 1
+            result += 1
+            percentage = (fives / totals)
+
+        return result
+
+
+if __name__ == "__main__":
+    print(Solution().solve(reviews = [[4, 4], [1, 2], [3, 6]], threshold = 77))             # 6
+    print(Solution().solve(reviews = [[10, 20]], threshold = 50))                           # 0 
+
+# Success!
+# Your code took 202 milliseconds — faster than 35.71% in Python
+
+
+#%%
+
+# Better solution. Not mine.
+# https://binarysearch.com/problems/5-Star-Review-Percentage/solutions/3776900
+
+
+import math
+
+
+class Solution:
+    def solve(self, reviews, threshold):
+        fives, totals = 0, 0
+
+        for i in reviews:
+            fives += i[0]
+            totals += i[1]
+
+        if threshold == 100: return 0   # Avoid dividing final result by zero
+        if (fives / totals) * 100 > threshold: return 0
+
+        return math.ceil((threshold * totals - 100 * fives) / (100 - threshold))
+
+
+if __name__ == "__main__":
+    print(Solution().solve(reviews = [[4, 4], [1, 2], [3, 6]], threshold = 77))             # 6
+    print(Solution().solve(reviews = [[10, 20]], threshold = 50))                           # 0 
+
+# Success!
+# Your code took 17 milliseconds — faster than 85.21% in Python
+
+
+#%%   
+
+# Better solution. Not mine.
+# https://binarysearch.com/problems/5-Star-Review-Percentage/solutions/3800318
+
+
+class Solution:
+    def solve(self, r, t):
+        return max(0, ceil(sum(t * y - 100 * x for x, y in r) / (100 - t))) if t != 100 else 0
+
