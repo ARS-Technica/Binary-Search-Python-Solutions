@@ -69,6 +69,20 @@ if __name__ == "__main__":
 
 
 class Solution:
+    def solve(self, nums): 
+        return [n for n in range(1, len(nums) + 1) if n not in set(nums)]
+
+
+if __name__ == "__main__":
+    print(Solution().solve(nums = [3, 3, 1, 1, 5, 5]))                          # [2, 4, 6]
+
+# Time Limit Exceeded
+
+
+#%%
+
+
+class Solution:
     def solve(self, nums):
         for n in nums:
             i = abs(n) - 1
