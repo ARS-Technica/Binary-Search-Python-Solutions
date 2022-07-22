@@ -66,3 +66,22 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def solve(self, nums):
+        for n in nums:
+            i = abs(n) - 1
+            nums[i] = -abs(nums[i])
+
+        return [i+1 for i, n in enumerate(nums) if n > 0]
+
+
+if __name__ == "__main__":
+    print(Solution().solve(nums = [3, 3, 1, 1, 5, 5]))                          # [2, 4, 6]
+
+# Success!
+# Your code took 133 milliseconds — faster than 42.10% in Python
+
+
+#%%
