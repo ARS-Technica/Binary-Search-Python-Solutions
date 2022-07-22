@@ -1,0 +1,36 @@
+"""
+971. Mutual Followers
+Easy
+https://binarysearch.com/problems/Mutual-Followers
+
+You are given a two-dimensional list of integers relations. Each element
+relations[i] contains [a, b] meaning that person a is following person b on
+Twitter.
+
+Return the list of people who follow someone that follows them back, sorted in
+ascending order.
+"""
+
+
+class Solution:
+    def solve(self, relations):
+        result = []
+
+        for i in relations:
+            if i[::-1] in relations:
+                if i[0] not in result:
+                    result.append(i[0])
+
+        result.sort()
+        return list(set(result))
+
+
+if __name__ == "__main__":
+    print(Solution().solve(relations = [[0, 1], [2, 3], [3, 4], [1, 0]]))       # [0, 1]
+    print(Solution().solve(relations = [[0, 1], [1, 2], [2, 3], [3, 0]]))       # []
+    print(Solution().solve(relations = [[0, 1], [2, 3], [3, 4], [1, 0]]))       # [0, 1]
+
+# Time Limit Exceeded
+
+
+#%%
