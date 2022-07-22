@@ -15,3 +15,40 @@ Constraints
 n ≤ 100,000 where n is the length of nums
 """
 
+
+class Solution:
+    def solve(self, nums):
+        numbers = list(range(1, len(nums) + 1))
+
+        for n in set(nums):
+            del numbers[numbers.index(n)]
+
+        return numbers
+
+
+if __name__ == "__main__":
+    print(Solution().solve(nums = [3, 3, 1, 1, 5, 5]))                          # [2, 4, 6]
+
+# Time Limit Exceeded
+
+
+#%%
+
+
+class Solution:
+    def solve(self, nums):
+        numbers = list(range(1, len(nums) + 1))
+
+        for n in set(nums):
+            numbers.remove(n)
+
+        return numbers
+
+
+if __name__ == "__main__":
+    print(Solution().solve(nums = [3, 3, 1, 1, 5, 5]))                          # [2, 4, 6]
+
+# Time Limit Exceeded
+
+
+#%%
