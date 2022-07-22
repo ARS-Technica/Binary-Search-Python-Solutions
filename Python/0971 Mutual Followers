@@ -57,3 +57,33 @@ if __name__ == "__main__":
 
 
 #%%
+
+# Time Complexity: O(n log n) | Space Complexity: O(n)
+
+
+class Solution:
+    def solve(self, relations):
+        firstpass = set()
+        result = set()
+
+        for a, b in relations:
+            firstpass.add((a, b))
+
+            if (b, a) in firstpass:
+                result.add(b)
+                result.add(a)
+
+        return sorted(list(result))
+
+
+if __name__ == "__main__":
+    print(Solution().solve(relations = [[0, 1], [2, 3], [3, 4], [1, 0]]))       # [0, 1]
+    print(Solution().solve(relations = [[0, 1], [1, 2], [2, 3], [3, 0]]))       # []
+    print(Solution().solve(relations = [[0, 1], [2, 3], [3, 4], [1, 0]]))       # [0, 1]
+    print(Solution().solve(relations = [[0, 1], [2, 1], [1, 2], ]))             # [1, 2]
+
+# Success!
+# Your code took 157 milliseconds — faster than 61.47% in Python
+
+
+#%%
