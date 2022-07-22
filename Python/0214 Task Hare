@@ -1,0 +1,39 @@
+"""
+214. Task Hare
+Easy
+https://binarysearch.com/problems/Task-Hare 
+
+You are given a list of integers tasks and another list of integers people. 
+The integer tasks[i] represents the amount of strength required to perform the
+ith task. people[i] represents the amount of strength the ith person has.
+
+Return the number of tasks that can be finished if one person can perform at most one task.
+"""
+
+
+class Solution:
+    def solve(self, tasks, people):
+        p, t = 0, 0
+        people.sort()
+        tasks.sort()
+
+        while p < len(people) and t < len(tasks):
+            if people[p] >= tasks[t]:
+                p += 1
+                t += 1                
+            else:
+                p += 1
+
+        return p
+
+
+if __name__ == "__main__":
+    print(Solution().solve(tasks = [3, 2, 9, 13], people = [10, 5, 2, 1]))      # 3
+    print(Solution().solve(tasks = [], people = [2, 2]))                        # 0
+    print(Solution().solve(tasks = [1], people = [1]))                          # 1
+    print(Solution().solve(tasks = [1, 1], people = [1]))                       # 1
+    
+# Wrong Answer
+
+
+#%%
