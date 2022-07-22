@@ -34,3 +34,26 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def solve(self, relations):
+        result = []
+
+        for i in relations:
+            if i[::-1] in relations:
+                result.append(i[0])
+
+        #result.sort()
+        return list(set(result))
+
+
+if __name__ == "__main__":
+    print(Solution().solve(relations = [[0, 1], [2, 3], [3, 4], [1, 0]]))       # [0, 1]
+    print(Solution().solve(relations = [[0, 1], [1, 2], [2, 3], [3, 0]]))       # []
+    print(Solution().solve(relations = [[0, 1], [2, 3], [3, 4], [1, 0]]))       # [0, 1]
+
+# Time Limit Exceeded
+
+
+#%%
