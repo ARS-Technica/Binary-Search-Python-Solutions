@@ -114,4 +114,29 @@ if __name__ == "__main__":
 # Your code took 133 milliseconds — faster than 42.10% in Python
 
 
+#%% 
+
+# Not mine.
+# https://binarysearch.com/problems/Missing-Numbers-From-1-to-N/solutions/3013600
+
+
+class Solution:
+    def solve(self, nums):
+        for i in range(len(a)):
+            p = abs(a[i])
+            if a[p - 1] > 0:
+                a[p - 1] *= -1
+
+        l = []
+
+        for i in range(len(a)):
+            if a[i] > 0:
+                l += (i + 1,)
+        return l
+
+
+if __name__ == "__main__":
+    print(Solution().solve(nums = [3, 3, 1, 1, 5, 5]))                          # [2, 4, 6]
+
+
 #%%
