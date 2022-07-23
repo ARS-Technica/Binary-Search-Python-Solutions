@@ -40,3 +40,36 @@ class Solution:
 
 
 %##
+
+from itertools import permutations
+
+
+class Solution:
+    def solve(self, nums, k):
+        for idx, number in enumerate(nums):
+            complimentary = k - number
+            if complimentary in nums [idx+1::]:
+                return True
+        
+        return False
+
+# Time Limit Exceeded
+
+
+%##
+
+from itertools import groupby
+
+
+class Solution: 
+    def solve(self, nums, k):
+        numsset = [k for k, g in groupby(nums)]
+        for idx, number in enumerate(numsset):
+            complimentary = k - number
+            if complimentary in numsset[idx+1::]:
+                return True
+        
+        return False
+
+# Your code took 21 milliseconds — faster than 24.04% in Python
+
