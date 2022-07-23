@@ -23,3 +23,20 @@ class Solution:
 
 # Time Limit Exceeded
 
+
+%##
+
+from itertools import permutations
+
+
+class Solution:
+    def solve(self, nums, k):
+        for pair in permutations(nums, 2):
+            if sum(pair) == k:
+                return True
+        return False  
+
+# Time Limit Exceeded
+
+
+%##
