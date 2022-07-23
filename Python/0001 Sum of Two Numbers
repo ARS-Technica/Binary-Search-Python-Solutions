@@ -73,3 +73,29 @@ class Solution:
 
 # Your code took 21 milliseconds — faster than 24.04% in Python
 
+
+#%%
+
+# Better solution. Not mine.
+# https://binarysearch.com/problems/Sum-of-Two-Numbers/solutions/3037475
+
+class Solution:
+    def solve(self, nums, k):
+        s = set()
+        for e in nums:
+            if k - e in s:
+                return True
+            s.add(e)
+        return False
+
+
+if __name__ == "__main__":
+    bs = Solution() 
+    print(bs.solve([35, 8, 18, 3, 22], 11))     # True
+    print(bs.solve([10, 36, 22, 14], 4))        # False
+    print(bs.solve([24, 10, 11, 4], 15))        # True
+    print(bs.solve([-22, 22, -11, 11], 0))      # True
+    print(bs.solve([15, 0, 3, 2], 15))          # True  
+ 
+
+#%%
