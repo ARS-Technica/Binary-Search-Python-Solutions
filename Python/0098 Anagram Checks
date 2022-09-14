@@ -1,0 +1,26 @@
+"""
+Anagram Checks
+https://binarysearch.com/problems/Anagram-Checks
+
+Given two strings s0 and s1, return whether they are anagrams of each other.
+
+Constraints
+
+n ≤ 100,000 where n is the length of s0
+m ≤ 100,000 where m is the length of s1
+"""
+
+
+class Solution:
+    def solve(self, s0, s1):
+        return sorted([char for char in s0]) == sorted([char for char in s1]) 
+
+
+if __name__ == "__main__":
+    print(Solution().solve("listen", "silent"))         # True
+    print(Solution().solve("bedroom", "bathroom"))      # False
+
+# Your code took 96 milliseconds — faster than 21.00% in Python
+
+
+#%%
