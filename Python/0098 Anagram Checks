@@ -87,3 +87,32 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+from collections import defaultdict
+
+class Solution:
+    def solve(self, s0, s1):
+        if len(s0) != len(s1):
+            return False 
+
+        count = defaultdict(int)
+
+        for char in s0:
+            count[char] += 1
+        for char in s1:
+            count[char] -= 1
+            if count[char] < 0:
+                return False
+
+        return True
+
+
+if __name__ == "__main__":
+    print(Solution().solve("listen", "silent"))         # True
+    print(Solution().solve("bedroom", "bathroom"))      # False
+
+# Your code took 65 milliseconds — faster than 75.00% in Python
+
+
+#%%
