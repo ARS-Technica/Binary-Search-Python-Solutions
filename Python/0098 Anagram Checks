@@ -56,3 +56,34 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def solve(self, s0, s1):
+        dic = {}
+        
+        for char in s0:
+            if char not in dic:
+                dic[char] = 0
+            dic[char] += 1
+        
+        for char in s1:
+            if char not in dic:
+                dic[char] = 0
+            dic[char] -= 1
+            
+        for key in dic.keys():
+            if dic[key] != 0:
+                return False
+            
+        return True
+
+
+if __name__ == "__main__":
+    print(Solution().solve("listen", "silent"))         # True
+    print(Solution().solve("bedroom", "bathroom"))      # False
+
+# Your code took 71 milliseconds — faster than 69.00% in Python
+
+
+#%%
