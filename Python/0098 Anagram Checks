@@ -116,3 +116,20 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+import string 
+
+class Solution:
+    def solve(self, s0, s1):
+        return all([s0.count(char) == s1.count(char) for char in string.ascii_lowercase])
+
+
+if __name__ == "__main__":
+    print(Solution().solve("listen", "silent"))         # True
+    print(Solution().solve("bedroom", "bathroom"))      # False
+
+# Your code took 23 milliseconds — faster than 99.00% in Python
+
+
+#%%
